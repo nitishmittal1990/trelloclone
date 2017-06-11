@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!-- define angular app -->
+<html ng-app="trelloApp">
+
+<head>
+  <!-- SCROLLS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+  <!-- SPELLS -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<!-- define angular controller -->
+<body ng-controller="mainController">
+
+  <header>
+    <div class="header-left">
+      <a href="javascript:void(0);">
+        <i class="fa fa-trello"></i>
+        Boards
+      </a>
+      <div class="searchbox">
+        <input type="seach" name="search">
+        <i class="fa fa-search"></i>
+      </div>
+    </div>
+    <a class="logo" href="javascript:void(0);"></a>
+    <div class="header-right">
+      <a href="javascript:void(0);">
+        <i class="fa fa-plus"></i>
+      </a>
+      <a href="javascript:void(0);">
+        <i class="fa fa-info-circle"></i>
+      </a>
+      <a href="javascript:void(0);">
+        <i class="fa fa-bell-o"></i>
+      </a>
+      <a href="javascript:void(0);">
+        NM
+      </a>
+    </div>
+  </header>
+
+  <div id="main">
+  
+    <!-- angular templating -->
+		<!-- this is where content will be injected -->
+    <div ng-view></div>
+    
+  </div>
+  
+  
+  
+</body>
+
+</html>

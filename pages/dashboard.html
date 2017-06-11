@@ -1,0 +1,99 @@
+<div class="dashboard-page">
+	<!-- <p>{{ message }}</p> -->
+	<div class="dashboard-header">
+		<h1>Welcome Board</h1>
+		<span class="fa fa-star-o"></span>
+		<span>
+			<i class="fa fa-lock"></i>Private
+		</span>
+	</div>	
+	<div class="dashboard-list">
+		<div class="single-board" ng-repeat = "list in lists">
+			<p class="board-head">{{list.name}}</p>
+			<div class="task-list">
+				<div ng-repeat="task in list.card" class="task-single">
+					<a href="javascript:void(0);" ng-click="showModal = !showModal" class="tasktitle">{{task.title}}</a>
+					<a href="javascript:void(0);" ng-click="showForm = !showForm" class="edittask">
+						<i class="fa fa-pencil"></i>
+					</a>
+					<div class="form" ng-show="showForm">
+						<form ng-submit="submitForm();">
+							<textarea type="text" name="" ng-model="task.title" autofocus=""></textarea>
+							<button ng-click="showForm = false">Save</button>
+						</form>
+					</div>
+					<div class="overlayedit" ng-show="showForm"></div>
+					<div class="overlay" ng-show="showModal"></div>
+					<div class="modalwindow" ng-show="showModal">
+						<a href="javascript:void(0);" ng-click="showModal = false" class="closemodal"><i class="fa fa-times"></i></a>
+						<div class="modalhead">
+							<i class="fa fa-trello"></i>
+							<p>{{task.title}}
+							<span>in list {{list.name}}</span>
+							</p>
+						</div>
+						<div class="modalbody">
+							<div class="modalbody-left">
+								<div class="editdesp">
+									<p><i class="fa fa-align-left"></i>Edit the description ...</p>
+									<div class="formdesp" style="display: none;">
+										<textarea></textarea>
+										<button>Save</button>
+									</div>
+								</div>
+								<div class="commentform">
+									<p><i class="fa fa-comment-o"></i>Add Comment</p>
+									<textarea ng-model="commentvalue" class="commenttext" required></textarea>
+									<button ng-click="addComment(commentvalue,list.id,task.cardid);">Send</button>
+								</div>
+								<div class="commentlistwrap">
+									<div class="commentlist" ng-repeat="comment in task.comment | reverse">
+										<p>{{comment.message}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="modalbody-right">
+								<div class="modaladdaction">
+									<p>Add</p>
+									<a href="javascript:void(0);">
+										<i class="fa fa-user-md"></i> Members
+									</a>
+									<a href="javascript:void(0);">
+										<i class="fa fa-tag"></i> Labels
+									</a>
+									<a href="javascript:void(0);">
+										<i class="fa fa-check-square-o"></i> Checklist
+									</a>
+									<a href="javascript:void(0);">
+										<i class="fa fa-clock-o"></i> Due Date
+									</a>
+									<a href="javascript:void(0);">
+										<i class="fa fa-paperclip"></i> Attachment
+									</a>
+								</div>
+								<div class="modaladdaction">
+									<p>Actions</p>
+									<a href="javascript:void(0);">
+										<i class="fa fa-arrow-right"></i> Move
+									</a>
+									<a href="javascript:void(0);">
+										<i class="fa fa-files-o"></i> Copy
+									</a>
+									<a href="javascript:void(0);">
+										<i class="fa fa-eye"></i> Subscribe
+									</a>
+									<a href="javascript:void(0);">
+										<i class="fa fa-archive"></i> Archive
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a href="javascript:void(0);" class="addtask">Add a card...</a>
+		</div>
+		
+	</div>
+</div>
+
